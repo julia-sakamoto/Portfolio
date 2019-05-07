@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div.main
     home
     about
     achievements
@@ -31,6 +31,17 @@ export default {
 </script>
 
 <style lang="less">
-
+body {
+  background-color: #121213;
+  height: 100%;
+  color: antiquewhite;
+  font-family: 'Abel';
+  margin: 0%;
+  .main {
+    display: flex;
+    flex-direction: column;
+      font-size: 2.5em;
+  }
+}
 </style>
 

@@ -1,6 +1,6 @@
 <template lang="pug">
-  div
-    p Achievements
+  div#main-achievements
+    h1 Achievements
     div.list
       mobile
       music
@@ -24,5 +24,12 @@ export default {
 </script>
 
 <style lang="less">
-
+  #main-achievements {
+    background-color: #1b2842;
+    .list {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+  }
 </style>
