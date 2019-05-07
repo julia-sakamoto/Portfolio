@@ -4,7 +4,7 @@
     about
     achievements
     contact
-    menu
+    site-menu
     top
 </template>
 
@@ -14,7 +14,7 @@ import Home from './components/Home'
 import About from './components/About'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
-import Menu from './components/overlay/Menu'
+import SiteMenu from './components/overlay/SiteMenu'
 import Top from './components/overlay/Top'
 
 export default {
@@ -24,7 +24,7 @@ export default {
     About,
     Achievements,
     Contact,
-    Menu,
+    SiteMenu,
     Top
   }
 }
