@@ -1,29 +1,47 @@
 <template lang="pug">
-  div#main-home
+  div#home
     div.title-text
       h1 Julia Sakamoto
-      h3 Interactive Portfolio
+      h3 Web Portfolio
+      div.sns
+        a(v-for='link in sns' :href='link.url')
+          img.imgs(:src='link.img')
 </template>
 
 
 <script>
 export default {
-  name: 'home'
+  name: 'home',
+  data() {
+    return {
+      sns: [
+        { url: 'https://twitter.com/ShiusMusic', img: require('../assets/sns/twitter.png') },
+        { url: 'https://www.youtube.com/channel/UCF_tfmZcciaGyoDO14q_LvA', img: require('../assets/sns/youtube.png') },
+        { url: 'https://open.spotify.com/artist/5rtPxYOqAocKkPSv8A808c', img: require('../assets/sns/spotify.png') },
+        { url: 'https://github.com/julia-sakamoto', img: require('../assets/sns/github.png') },
+        { url: 'https://www.linkedin.com/in/julia-batoon-sakamoto-76b4b0128/', img: require('../assets/sns/linkedin.png') }
+      ]
+    }
+  }
 }
 </script>
 
 <style lang="less">
-  #main-home {
-    background-image: url('../assets/moon.png');
-    background-color: #1b2842;
-    background-blend-mode: color-dodge;
-    background-size: 100%;
-    background-position-y: 50%;
-    .title-text {
-      mix-blend-mode: difference;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  .sns {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .imgs {
+      width: 30px;
+      height: auto;
+      filter: invert(100%);
     }
+  }
+  .title-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 0%;
   }
 </style>

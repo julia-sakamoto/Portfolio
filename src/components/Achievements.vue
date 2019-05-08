@@ -2,9 +2,8 @@
   div#main-achievements
     h1 Achievements
     div.list
-      mobile
-      music
-      web
+      mobile.content
+      web.content
 </template>
 
 
@@ -25,11 +24,13 @@ export default {
 
 <style lang="less">
   #main-achievements {
-    background-color: #1b2842;
+    background-color: #3b5a8d;
+    padding: 5%;
     .list {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+      .content {
+        width: 100%;
+        size: 0em;
+      }
     }
   }
 </style>
