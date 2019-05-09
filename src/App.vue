@@ -1,16 +1,15 @@
 <template lang="pug">
   div.main
-    div.sun
+    menu-content(v-show='isMenu' @click='clickMenu()' :isJpn='isJpn' @toggleLang='toggleLang()' @toBottom='toBottom()')
     div.moon
       div.inner
     div.stars
-      p
     div.home
-      home
+      home(:isJpn='isJpn')
     div.content
-      achievements
-      about
-      contact
+      achievements(:isJpn='isJpn')
+      about(:isJpn='isJpn')
+      contact(:isJpn='isJpn')
     div.menu
       div.menu-icon(v-show='!isMenu' @click='clickMenu()')
         div.bar
@@ -28,8 +27,8 @@ import Home from './components/Home'
 import About from './components/About'
 import Achievements from './components/Achievements'
 import Contact from './components/Contact'
-import SiteMenu from './components/overlay/SiteMenu'
 import Top from './components/overlay/Top'
+import MenuContent from './components/overlay/MenuContent'
 
 export default {
   name: 'app',
@@ -38,25 +37,32 @@ export default {
     About,
     Achievements,
     Contact,
-    SiteMenu,
-    Top
+    Top,
+    MenuContent
   },
   data() {
     return {
-      isJpn: false,
+      isJpn: true,
       isMenu: false,
     }
   },
   methods: {
-    changeEng() {
-      this.isJpn = false;
-    },
-    changeJpn() {
-      this.isJpn = true;
+    toggleLang() {
+      this.isJpn = !this.isJpn;
     },
     clickMenu() {
       this.isMenu = !this.isMenu;
+    },
+    toBottom() {
+      window.scroll({
+        top: document.body.scrollHeight,
+        left: 0,
+        behavior: 'smooth'
+      });
     }
+  },
+  beforeMount() {
+    window.scrollTo(0, 0);
   }
 }
 </script>
@@ -72,25 +78,24 @@ body {
     background: -moz-linear-gradient(top, #1e5799 0%, #ff6f3f 96%, #ff6f3f 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, #1e5799 0%,#ff6f3f 96%,#ff6f3f 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, #1e5799 0%,#ff6f3f 96%,#ff6f3f 100%);
-    font-size: 2.5em;
+    font-size: calc(0.5em + 2.3vw);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 5%;
-    .sun {
-      position: absolute;
-    }
+    min-height: 100%;
     .moon {
       position: absolute;
-      right: 5%;
-      top: 15%;
+      right: 5vw;
+      top: 15vw;
       display: block;
       box-shadow: inset 20px -30px 0 20px aliceblue;
       background-color: transparent;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;        
+      width: calc(100px + 20vw);
+      height: calc(100px + 20vw);
+      border-radius: 50%;
+      mix-blend-mode: overlay;        
     }
     .stars {
       width: 100%;
@@ -113,29 +118,32 @@ body {
     .menu{
       position: fixed;
       top: 3%;
-      left: 1%;
+      left: 1.5vw;
+      width: calc(20px + 1vw);
+      height: calc(20px + 1vw);
+      cursor: pointer;
       .menu-icon {
-        width: 30px;
-        height: 30px;
+        width: calc(20px + 1vw);
+        height: calc(15px + 1vw);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         .bar {
-          width: 30px;
+          width: calc(20px + 1vw);
           height: 2px;
           background-color: antiquewhite;
         }
       }
       .menu-exit {
-        width: 30px;
-        height: 30px;
+        width: calc(20px + 1vw);
+        height: calc(20px + 1vw);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         .x-left {
-          width: 35px;
+          width: calc(20px + 1vw);
           height: 4px;
           position: absolute;
           top: 25%;
@@ -143,7 +151,7 @@ body {
           background-color: antiquewhite;
         }
         .x-right {
-          width: 35px;
+          width: calc(20px + 1vw);
           height: 4px;
           position: absolute;
           top: 25%;

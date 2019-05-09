@@ -1,22 +1,23 @@
 <template lang="pug">
   div#main-achievements
-    h1 Achievements
-    div.list
-      mobile.content
-      web.content
+    div
+      h1(v-show='!isJpn') Achievements
+      h1(v-show='isJpn') 実績
+      div.list
+        web.content(:isJpn='isJpn')
+        mobile.content(:isJpn='isJpn')
 </template>
 
 
 <script>
 import Mobile from './achievements/Mobile'
-import Music from './achievements/Music'
 import Web from './achievements/Web'
 
 export default {
   name: 'achievements',
+  props: [ 'isJpn' ],
   components: {
     Mobile,
-    Music,
     Web
   }
 }
@@ -29,7 +30,6 @@ export default {
     .list {
       .content {
         width: 100%;
-        size: 0em;
       }
     }
   }
